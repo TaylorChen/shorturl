@@ -1,7 +1,7 @@
 > ## This is a short url solution
 > 1. This solution uses redis as a temporary storage to store long-url and short-url mapping relationships. If you want to persist, you can use the database as a permanent solution.
 > 2. Solved the problem of small probability hash conflicts.
-> 3. You can use nginx to build a short url domain proxy, such as my.cn. When you visit http://m.cn/Lu2bk3, you can directly jump to the original address.
+> 3. You can use nginx to build a short url domain proxy, such as my.cn. When you visit http://m.cn/SlnkP, you can directly jump to the original address.
 
 > ## How to run
 ```powershell
