@@ -20,7 +20,7 @@ var (
 var mutex = &sync.Mutex{}
 
 func init() {
-	flag.StringVar(&confFile, "c", "conf/dev.conf", "set config path")
+	flag.StringVar(&confFile, "c", "conf/shorturl.conf", "set config path")
 }
 
 func main() {
