@@ -52,6 +52,7 @@ func getHash(url string) string {
 	hasher := murmur3.New32()
 	hasher.Write([]byte(url))
 	uint32Num := hasher.Sum32()
+	hasher.Reset()
 	shortHashstr := ut.DecimalTo62(uint32Num)
 	return shortHashstr
 }
