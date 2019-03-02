@@ -4,11 +4,11 @@
 > 3. You can use nginx to build a short url domain proxy, such as my.cn. When you visit http://m.cn/Lu2bk3, you can directly jump to the original address.
 
 > ## How to run
-> 
-> git clone git@github.com:TaylorChen/shorturl.git
-> cd shorturl
-> go run main.go -c conf/shorturl.conf
-
+```powershell
+git clone git@github.com:TaylorChen/shorturl.git
+cd shorturl
+go run main.go -c conf/shorturl.conf
+```
 
 > ## Support Functions
 > 1. Generate a short url

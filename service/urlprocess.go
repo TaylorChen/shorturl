@@ -7,6 +7,7 @@ import (
 	"log"
 	"math/rand"
 	"regexp"
+	"shorturl/conf"
 	"shorturl/middleware/redis"
 	"shorturl/util"
 	"strconv"
@@ -21,7 +22,7 @@ var (
 var urlRegexp = regexp.MustCompile(`\[!@[A-Z]+@!\]`)
 
 const redisKeyPrefix string = "shorturl:%s"
-const shorturlDomain string = "http://m.cn/"
+const domainSchema string = "http://"
 const leftPrefix string = "[!@"
 const rightPrefix string = "@!]"
 
@@ -56,6 +57,7 @@ func getHash(url string) string {
 }
 
 func (s *Service) GenShortUrl(originUrl string) string {
+	shorturlDomain := domainSchema + conf.Conf.Domain.Name + "/"
 	shortHashstr := getHash(originUrl)
 	redisKey := fmt.Sprintf(redisKeyPrefix, shortHashstr)
 	redisLongUrl, err := redis.Redis().Get(redisKey).Result()

@@ -9,17 +9,23 @@ import (
 
 var (
 	Conf              config // holds the global app config.
-	defaultConfigFile = "conf/dev.conf"
+	defaultConfigFile = "conf/shorturl.conf"
 )
 
 type config struct {
 	// Redis
 	Redis redis
+	// domain
+	Domain domain
 }
 
 type redis struct {
 	Server string `toml:"server"`
 	Pwd    string `toml:"pwd"`
+}
+
+type domain struct {
+	Name string `toml:"name"`
 }
 
 func init() {
