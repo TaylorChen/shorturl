@@ -12,8 +12,12 @@ go run main.go -c conf/shorturl.conf
 
 > ## Support Functions
 > 1. Generate a short url
-> > curl -d "longurl=http://www.baidu.com" "http://127.0.0.1:8088/gen_short_url"
-> > http://m.cn/Lu2bk3
+```powershell
+curl -d "longurl=https://en.wikipedia.org/wiki/Google" "http://127.0.0.1:8088/gen_short_url"
+http://m.cn/SlnkP
+````
 > 2. Get a long url
-> > curl "http://127.0.0.1:8088/get_long_url?short=Lu2bk3"
-> > http://www.baidu.com
+```powershell
+curl "http://127.0.0.1:8088/get_long_url?short=SlnkP"
+https://en.wikipedia.org/wiki/Google
+````

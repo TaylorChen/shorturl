@@ -52,7 +52,7 @@ func handleGetLongUrl(w http.ResponseWriter, r *http.Request) {
 		_, isExist := query["short"]
 		if isExist {
 			shorturl := query["short"][0]
-			io.WriteString(w, svr.GetOriginUrl(shorturl))
+			io.WriteString(w, svr.GetOriginUrl(shorturl)+"\n")
 			return
 		}
 	}
