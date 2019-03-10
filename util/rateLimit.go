@@ -1,7 +1,6 @@
 package util
 
 import (
-	"fmt"
 	"shorturl/middleware/redis"
 	"strconv"
 	"time"
@@ -23,7 +22,6 @@ func (u *Util) Rate(key string, num, gap int) bool {
 		redisNow := redis.Redis().LIndex(rateLimitKey, -1)
 		redisIntNow, _ := strconv.Atoi(redisNow.Val())
 		if (now - int64(redisIntNow)) < int64(gap) {
-			fmt.Print("rate error")
 			return true
 		} else {
 			pipe := redis.Redis().Pipeline()
