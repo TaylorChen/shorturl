@@ -9,13 +9,14 @@ import (
 
 func (u *Util) Rate(key string, num, gap int) bool {
 	rateLimitKey := "rate_limit_prefix_" + key
+	expires := gap * 2
 	lens, _ := redis.Redis().LLen(rateLimitKey).Result()
 	nTime := time.Now()
 	now := nTime.Unix()
 	if lens < int64(num) {
 		pipe := redis.Redis().Pipeline()
 		redis.Redis().LPush(rateLimitKey, now)
-		pipe.Expire(rateLimitKey, 300*time.Second)
+		pipe.Expire(rateLimitKey, time.Duration(expires)*time.Second)
 		pipe.Exec()
 		return false
 	} else {
@@ -28,6 +29,7 @@ func (u *Util) Rate(key string, num, gap int) bool {
 			pipe := redis.Redis().Pipeline()
 			redis.Redis().LPush(rateLimitKey, now)
 			redis.Redis().LTrim(rateLimitKey, 0, int64(num-1))
+			pipe.Expire(rateLimitKey, time.Duration(expires)*time.Second)
 			pipe.Exec()
 			return false
 		}
