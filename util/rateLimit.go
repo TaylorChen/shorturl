@@ -8,7 +8,7 @@ import (
 )
 
 func (u *Util) Rate(key string, num, gap int) bool {
-	rateLimitKey := "rate_limit_prefix_" + key
+	rateLimitKey := "rate_limit_" + key
 	expires := gap * 2
 	lens, _ := redis.Redis().LLen(rateLimitKey).Result()
 	nTime := time.Now()
